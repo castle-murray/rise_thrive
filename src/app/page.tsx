@@ -1,7 +1,7 @@
 import { Button } from "@/components/Button";
 import { Section } from "@/components/PageHero";
 import { Reveal, Stagger, StaggerItem } from "@/components/Reveal";
-import { mission, programs, site, staff, values } from "@/lib/site";
+import { houseSkills, mission, programs, site, staff, values } from "@/lib/site";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -67,22 +67,22 @@ export default function Home() {
           <Reveal>
             <p className="eyebrow text-gold-deep">Life in the house</p>
             <h2 className="font-display mt-3 text-3xl sm:text-4xl text-emerald">
-              School. Dinner. Homework. A backyard game.
+              Skills they practice here.
             </h2>
+            <p className="mt-4 max-w-2xl text-ink/75 leading-relaxed">
+              School mornings and shared dinners are the frame. Inside it, youth rehearse the ordinary
+              work of growing up — one chore, one homework hour, one ask-for-help at a time.
+            </p>
           </Reveal>
-          <div className="mt-10 grid sm:grid-cols-2 gap-4">
-            {[
-              { src: "/images/youth-cooking.jpg", alt: "Youth cooking with a house parent", label: "Skills" },
-              { src: "/images/youth-homework.jpg", alt: "A teen doing homework with a counselor", label: "School" },
-              { src: "/images/youth-living.jpg", alt: "Teens hanging out in the living room", label: "Home" },
-              { src: "/images/youth-bball.jpg", alt: "Youth playing basketball in the driveway", label: "Play" },
-            ].map((p) => (
-              <Reveal key={p.src} className="relative aspect-[4/3] overflow-hidden">
-                <Image src={p.src} alt={p.alt} fill sizes="(max-width: 640px) 100vw, 50vw" className="object-cover" />
-                <span className="absolute bottom-3 left-3 font-display text-champagne text-xl drop-shadow">{p.label}</span>
-              </Reveal>
+          <Stagger className="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {houseSkills.map((s) => (
+              <StaggerItem key={s.title} className="border border-gold/25 bg-champagne-deep/40 p-6 sm:p-7">
+                <div className="h-px w-10 bg-gold mb-4" />
+                <h3 className="font-display text-xl text-emerald">{s.title}</h3>
+                <p className="mt-2 text-sm text-muted leading-relaxed">{s.body}</p>
+              </StaggerItem>
             ))}
-          </div>
+          </Stagger>
         </Section>
       </section>
 

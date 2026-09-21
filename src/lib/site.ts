@@ -165,6 +165,35 @@ export const daily = [
   { time: "Evening", body: "Family-style dinner, homework, downtime, and a predictable bedtime." },
 ] as const;
 
+
+export const houseSkills = [
+  {
+    title: "Cooking & meal prep",
+    body: "Chopping, following a recipe, setting a table — and eating together when the work is done.",
+  },
+  {
+    title: "Laundry & household care",
+    body: "Sorting loads, making a bed, wiping a counter. The ordinary work of keeping a house kind.",
+  },
+  {
+    title: "School & homework habits",
+    body: "A quiet desk, a backpack ready by the door, and adults who check in when school gets hard.",
+  },
+  {
+    title: "Calendars & time",
+    body: "Planning a morning, catching a bus, knowing what comes next without surprise.",
+  },
+  {
+    title: "Communication & asking for help",
+    body: "Saying what you need out loud — and practicing until it is not shameful.",
+  },
+  {
+    title: "Recreation & healthy downtime",
+    body: "A backyard game, a walk, a quiet corner. Rest that is not a void.",
+  },
+] as const;
+
+
 export const admission = [
   {
     title: "Ages served",
