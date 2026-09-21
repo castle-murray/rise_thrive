@@ -8,12 +8,18 @@ import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useLayoutEffect, useState } from "react";
+import { createPortal } from "react-dom";
 
 export function Header() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const reduce = useReducedMotion();
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useLayoutEffect(() => {
     if (window.location.hash) return;
@@ -44,9 +50,14 @@ export function Header() {
     <header
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-[background,box-shadow,backdrop-filter] duration-500",
+        // Never use backdrop-blur while the menu is open: backdrop-filter makes
+        // position:fixed descendants resolve against the header (~64px), which
+        // clipped the mobile nav and made the hamburger look empty.
         inverted
           ? "bg-transparent"
-          : "bg-cream/90 backdrop-blur-md shadow-[0_1px_0_rgba(44,90,60,0.08)]",
+          : open
+            ? "bg-cream shadow-[0_1px_0_rgba(44,90,60,0.08)]"
+            : "bg-cream/90 backdrop-blur-md shadow-[0_1px_0_rgba(44,90,60,0.08)]",
       )}
     >
       <div className="mx-auto flex h-16 sm:h-[4.5rem] max-w-6xl items-center justify-between gap-3 px-4 sm:px-6">
@@ -130,54 +141,60 @@ export function Header() {
         </div>
       </div>
 
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            id="mobile-nav"
-            className="lg:hidden fixed inset-0 top-16 bg-cream z-40 overflow-y-auto"
-            initial={reduce ? false : { opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.28 }}
-          >
-            <nav className="flex flex-col px-6 pt-6 pb-24" aria-label="Mobile">
-              {nav.map((item, i) => (
-                <motion.div
-                  key={item.href}
-                  initial={reduce ? false : { opacity: 0, y: 12 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.05 * i, duration: 0.4 }}
-                >
-                  <Link
-                    href={item.href}
-                    onClick={() => setOpen(false)}
-                    className={cn(
-                      "block py-3.5 font-display text-3xl text-forest border-b border-forest/10",
-                      pathname === item.href && "text-leaf",
-                    )}
-                  >
-                    {item.label}
-                  </Link>
-                </motion.div>
-              ))}
-              <motion.div
-                className="mt-8 flex flex-col gap-3"
-                initial={reduce ? false : { opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.35 }}
-                onClick={() => setOpen(false)}
-              >
-                <Button href="/get-support" size="lg">
-                  I need support
-                </Button>
-                <Button href="/donate" variant="terracotta" size="lg">
-                  Give to {site.shortName}
-                </Button>
-              </motion.div>
-            </nav>
-          </motion.div>
+      {mounted &&
+        createPortal(
+                <AnimatePresence>
+                  {open && (
+                    <motion.div
+                      id="mobile-nav"
+                      className="lg:hidden fixed inset-0 top-16 bg-cream z-[60] overflow-y-auto"
+                      initial={reduce ? false : { opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.28 }}
+                    >
+                      <nav className="flex flex-col px-6 pt-6 pb-24" aria-label="Mobile">
+                        {nav.map((item, i) => (
+                          <motion.div
+                            key={item.href}
+                            initial={reduce ? false : { opacity: 0, y: 12 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.05 * i, duration: 0.4 }}
+                          >
+                            <Link
+                              href={item.href}
+                              onClick={() => setOpen(false)}
+                              className={cn(
+                                "block py-3.5 font-display text-3xl text-forest border-b border-forest/10",
+                                pathname === item.href && "text-leaf",
+                              )}
+                            >
+                              {item.label}
+                            </Link>
+                          </motion.div>
+                        ))}
+                        <motion.div
+                          className="mt-8 flex flex-col gap-3"
+                          initial={reduce ? false : { opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: 0.35 }}
+                          onClick={() => setOpen(false)}
+                        >
+                          <Button href="/get-support" size="lg">
+                            I need support
+                          </Button>
+                          <Button href="/donate" variant="terracotta" size="lg">
+                            Give to {site.shortName}
+                          </Button>
+                        </motion.div>
+                      </nav>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+          ,
+          document.body,
         )}
-      </AnimatePresence>
+
     </header>
   );
 }

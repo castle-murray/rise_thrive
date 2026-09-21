@@ -116,13 +116,14 @@ export default function AboutPage() {
         </Reveal>
         <Reveal delay={0.1}>
           <p className="eyebrow">People</p>
-          <h2 className="font-display mt-3 text-3xl text-forest">The team is being gathered.</h2>
+          <h2 className="font-display mt-3 text-3xl text-forest">Leadership is on the Staff page.</h2>
           <p className="mt-4 text-lg text-ink/80 leading-relaxed">
-            House parents, clinicians, and community partners will live on this page once names
-            and photos are ready. If you might be one of them, we want to hear from you.
+            Meet Latrecia Russell and Randall Jones — the owners who keep the house
+            running — with roles and photos on our Staff page. House parents, clinicians,
+            and partners will join them as the team grows.
           </p>
           <div className="mt-7 flex flex-col sm:flex-row gap-3">
-            <Button href="/contact">Talk with us</Button>
+            <Button href="/staff">Meet the staff</Button>
             <Button href="/get-involved" variant="ghost" className="text-forest">
               Get involved
             </Button>

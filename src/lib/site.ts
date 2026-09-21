@@ -10,11 +10,27 @@ export const site = {
 
 export const nav = [
   { href: "/about", label: "About" },
+  { href: "/staff", label: "Staff" },
   { href: "/programs", label: "Programs" },
   { href: "/get-support", label: "Get support" },
   { href: "/get-involved", label: "Get involved" },
   { href: "/donate", label: "Give" },
   { href: "/contact", label: "Contact" },
+] as const;
+
+export const staff = [
+  {
+    name: "Latrecia Russell",
+    roles: "Owner / Executive Director · Youth Services Supervisor · Direct Care Staff",
+    photo: "/staff/latrecia-russell.jpeg",
+    alt: "Portrait of Latrecia Russell",
+  },
+  {
+    name: "Randall Jones",
+    roles: "Co-Owner / Food Manager · Direct Care Staff",
+    photo: "/staff/randall-jones.jpeg",
+    alt: "Portrait of Randall Jones",
+  },
 ] as const;
 
 export const values = [
