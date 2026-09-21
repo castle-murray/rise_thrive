@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import nodemailer from "nodemailer";
 
 export async function POST(request: Request) {
   let body: {
@@ -21,6 +22,11 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: false, error: "Missing required fields" }, { status: 400 });
   }
 
+  // Basic email shape check
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    return NextResponse.json({ ok: false, error: "Invalid email" }, { status: 400 });
+  }
+
   const record = {
     name,
     email,
@@ -30,33 +36,45 @@ export async function POST(request: Request) {
     receivedAt: new Date().toISOString(),
   };
 
-  const apiKey = process.env.RESEND_API_KEY;
-  const to = process.env.CONTACT_TO_EMAIL;
-  const from = process.env.CONTACT_FROM_EMAIL ?? "Rise & Thrive <noreply@riseandthrive.example>";
+  const to = process.env.CONTACT_TO_EMAIL ?? "hello@riseandthrivegh.info";
+  const from =
+    process.env.CONTACT_FROM_EMAIL ?? "Rise & Thrive <hello@riseandthrivegh.info>";
+  const user = process.env.SMTP_USER ?? "hello@riseandthrivegh.info";
+  const pass = process.env.GMAIL_APP_PASSWORD ?? process.env.SMTP_PASS;
+  const host = process.env.SMTP_HOST ?? "smtp.gmail.com";
+  const port = Number(process.env.SMTP_PORT ?? "465");
+  const secure = process.env.SMTP_SECURE
+    ? process.env.SMTP_SECURE === "true"
+    : port === 465;
 
-  if (apiKey && to) {
-    const res = await fetch("https://api.resend.com/emails", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${apiKey}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        from,
-        to: [to],
-        reply_to: email,
-        subject: `[Website] ${record.subject || "Inquiry"} — ${name}`,
-        text: Object.entries(record)
-          .map(([k, v]) => `${k}: ${v}`)
-          .join("\n"),
-      }),
+  if (!pass) {
+    console.info("[contact:no-smtp]", { to, from, name, email });
+    return NextResponse.json(
+      { ok: false, error: "Mail not configured" },
+      { status: 503 },
+    );
+  }
+
+  const transporter = nodemailer.createTransport({
+    host,
+    port,
+    secure,
+    auth: { user, pass },
+  });
+
+  try {
+    await transporter.sendMail({
+      from,
+      to,
+      replyTo: email,
+      subject: `[Website] ${record.subject || "Inquiry"} — ${name}`,
+      text: Object.entries(record)
+        .map(([k, v]) => `${k}: ${v}`)
+        .join("\n"),
     });
-    if (!res.ok) {
-      console.error("Resend error", await res.text());
-      return NextResponse.json({ ok: false, error: "Delivery failed" }, { status: 502 });
-    }
-  } else {
-    console.info("[contact:dev]", record);
+  } catch (err) {
+    console.error("SMTP delivery failed", err instanceof Error ? err.message : "unknown");
+    return NextResponse.json({ ok: false, error: "Delivery failed" }, { status: 502 });
   }
 
   return NextResponse.json({ ok: true });
