@@ -2,16 +2,17 @@ import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { site } from "@/lib/site";
 import type { Metadata } from "next";
-import { Fraunces, Source_Sans_3 } from "next/font/google";
+import { Cinzel, Outfit } from "next/font/google";
 import "./globals.css";
 
-const display = Fraunces({
+const display = Cinzel({
   subsets: ["latin"],
   variable: "--font-display-family",
   display: "swap",
+  weight: ["400", "500", "600"],
 });
 
-const sans = Source_Sans_3({
+const sans = Outfit({
   subsets: ["latin"],
   variable: "--font-sans-family",
   display: "swap",
@@ -22,27 +23,22 @@ const url = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 export const metadata: Metadata = {
   metadataBase: new URL(url),
   title: {
-    default: `${site.shortName} — ${site.tagline.replace(/\.$/, "")}`,
+    default: `${site.shortName} — ${site.tagline}`,
     template: `%s · ${site.shortName}`,
   },
-  description: `${site.descriptor}. ${site.summary}`,
+  description: site.summary,
   applicationName: site.shortName,
   keywords: [
     "youth group home",
+    "Portsmouth VA",
     "residential care",
+    "ages 10-17",
     "Rise and Thrive",
-    "support services",
-    "youth housing",
   ],
   openGraph: {
     type: "website",
     locale: "en_US",
     siteName: site.name,
-    title: site.shortName,
-    description: site.summary,
-  },
-  twitter: {
-    card: "summary_large_image",
     title: site.shortName,
     description: site.summary,
   },
@@ -53,7 +49,6 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "NGO",
   name: site.name,
-  alternateName: site.shortName,
   slogan: site.tagline,
   description: site.summary,
   url,
@@ -61,17 +56,18 @@ const jsonLd = {
   email: process.env.NEXT_PUBLIC_EMAIL,
   address: {
     "@type": "PostalAddress",
-    streetAddress: process.env.NEXT_PUBLIC_ADDRESS_LINE1,
-    addressLocality: "Your City",
-    addressRegion: "ST",
-    postalCode: "00000",
+    streetAddress: "2114 Nashville Ave",
+    addressLocality: "Portsmouth",
+    addressRegion: "VA",
+    postalCode: "23704",
+    addressCountry: "US",
   },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={`${display.variable} ${sans.variable} antialiased`}>
-      <body className="min-h-dvh flex flex-col bg-cream text-ink font-sans">
+      <body className="min-h-dvh flex flex-col bg-ivory text-ink font-sans">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

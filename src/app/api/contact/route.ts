@@ -1,18 +1,15 @@
 import { NextResponse } from "next/server";
 
-type Payload = {
-  kind?: string;
-  name?: string;
-  email?: string;
-  phone?: string;
-  subject?: string;
-  message?: string;
-};
-
 export async function POST(request: Request) {
-  let body: Payload;
+  let body: {
+    name?: string;
+    email?: string;
+    phone?: string;
+    subject?: string;
+    message?: string;
+  };
   try {
-    body = (await request.json()) as Payload;
+    body = await request.json();
   } catch {
     return NextResponse.json({ ok: false, error: "Invalid JSON" }, { status: 400 });
   }
@@ -25,7 +22,6 @@ export async function POST(request: Request) {
   }
 
   const record = {
-    kind: body.kind ?? "contact",
     name,
     email,
     phone: String(body.phone ?? "").trim(),
@@ -49,21 +45,14 @@ export async function POST(request: Request) {
         from,
         to: [to],
         reply_to: email,
-        subject: `[${record.kind}] ${record.subject || "Website inquiry"} — ${name}`,
-        text: [
-          `Kind: ${record.kind}`,
-          `Name: ${name}`,
-          `Email: ${email}`,
-          `Phone: ${record.phone}`,
-          `Subject: ${record.subject}`,
-          "",
-          message,
-        ].join("\n"),
+        subject: `[Website] ${record.subject || "Inquiry"} — ${name}`,
+        text: Object.entries(record)
+          .map(([k, v]) => `${k}: ${v}`)
+          .join("\n"),
       }),
     });
     if (!res.ok) {
-      const detail = await res.text();
-      console.error("Resend error", detail);
+      console.error("Resend error", await res.text());
       return NextResponse.json({ ok: false, error: "Delivery failed" }, { status: 502 });
     }
   } else {

@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "Rise & Thrive Support Services — Nurturing Growth, Inspiring Hope.";
+export const alt = "Rise & Thrive Support Services — Nurturing Growth. Inspiring Hope.";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -14,34 +14,20 @@ export default function OgImage() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          background: "#F6F0E6",
+          background: "#0E3D2C",
           padding: 72,
         }}
       >
-        <div
-          style={{
-            display: "flex",
-            width: 72,
-            height: 72,
-            borderRadius: 999,
-            border: "2px solid #2C5A3C",
-            alignItems: "center",
-            justifyContent: "center",
-            color: "#2C5A3C",
-            fontSize: 28,
-          }}
-        >
-          RT
+        <div style={{ color: "#E8C547", fontSize: 18, letterSpacing: 8 }}>
+          PORTSMOUTH, VIRGINIA
         </div>
         <div style={{ display: "flex", flexDirection: "column" }}>
-          <div style={{ color: "#2C5A3C", fontSize: 72, lineHeight: 1.05, fontWeight: 600 }}>
-            Rise & Thrive
+          <div style={{ color: "#F6EDD9", fontSize: 68, fontWeight: 600 }}>Rise & Thrive</div>
+          <div style={{ color: "#E8C547", fontSize: 28, marginTop: 16 }}>
+            Nurturing Growth. Inspiring Hope.
           </div>
-          <div style={{ color: "#6B6258", fontSize: 28, marginTop: 16 }}>
-            Nurturing Growth, Inspiring Hope.
-          </div>
-          <div style={{ color: "#2C5A3C", fontSize: 20, marginTop: 28, letterSpacing: 4 }}>
-            A RESIDENTIAL GROUP HOME FOR YOUTH
+          <div style={{ color: "#F6EDD9", fontSize: 18, marginTop: 28, letterSpacing: 3 }}>
+            RESIDENTIAL GROUP HOME FOR YOUTH AGES 10–17
           </div>
         </div>
       </div>

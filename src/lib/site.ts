@@ -2,146 +2,199 @@ export const site = {
   name: "Rise & Thrive Support Services, LLC",
   shortName: "Rise & Thrive",
   legalName: "Rise & Thrive Support Services, LLC",
-  tagline: "Nurturing Growth, Inspiring Hope.",
-  descriptor: "A Residential Group Home for Youth",
+  tagline: "Nurturing Growth. Inspiring Hope.",
+  descriptor: "Residential Group Home for Youth Ages 10–17",
+  ages: "10–17",
+  city: "Portsmouth, Virginia",
   summary:
-    "A warm, family-style home where youth can feel safe, grow at their own pace, and practice the skills of a thriving life.",
+    "A nurturing residential group home for youth ages 10–17. A safe place to grow, heal, and build confidence — through structure, compassion, and genuine care.",
 } as const;
 
 export const nav = [
   { href: "/about", label: "About" },
-  { href: "/staff", label: "Staff" },
   { href: "/programs", label: "Programs" },
-  { href: "/get-support", label: "Get support" },
-  { href: "/get-involved", label: "Get involved" },
-  { href: "/donate", label: "Give" },
+  { href: "/staff", label: "Our people" },
+  { href: "/faq", label: "FAQ" },
   { href: "/contact", label: "Contact" },
-] as const;
-
-export const staff = [
-  {
-    name: "Latrecia Russell",
-    roles: "Owner / Executive Director · Youth Services Supervisor · Direct Care Staff",
-    photo: "/staff/latrecia-russell.jpeg",
-    alt: "Portrait of Latrecia Russell",
-  },
-  {
-    name: "Randall Jones",
-    roles: "Co-Owner / Food Manager · Direct Care Staff",
-    photo: "/staff/randall-jones.jpeg",
-    alt: "Portrait of Randall Jones",
-  },
-] as const;
-
-export const values = [
-  {
-    title: "Safety first",
-    body: "A predictable home, kind adults, and clear boundaries. Safety is the soil everything else grows in.",
-  },
-  {
-    title: "Dignity always",
-    body: "Every young person is more than a circumstance. We speak with respect, and we listen before we advise.",
-  },
-  {
-    title: "Belonging",
-    body: "Family-style meals, shared chores, quiet corners, and the ordinary rhythms of a real home.",
-  },
-  {
-    title: "Growth",
-    body: "Life skills, school support, and room to try, fail, and try again — with someone in the doorway.",
-  },
-  {
-    title: "Hope you can hold",
-    body: "Not slogans. Small, repeatable proofs that tomorrow can be different from yesterday.",
-  },
-] as const;
-
-export const programs = [
-  {
-    slug: "residential",
-    title: "Residential living",
-    image: "/images/bedroom.jpg",
-    summary:
-      "A real bedroom. A shared table. Adults who stay. Overnight care in a home, not an institution.",
-    details:
-      "Youth live in a family-style group home with 24-hour supervision, nutritious meals, and a daily rhythm that feels like life — not a program. House rules are clear, fair, and taught with patience.",
-  },
-  {
-    slug: "life-skills",
-    title: "Daily life & life skills",
-    image: "/images/kitchen.jpg",
-    summary:
-      "Cooking, laundry, budgets, calendars, and the unglamorous work of becoming independent.",
-    details:
-      "We practice the skills that make adulthood possible: planning a meal, keeping a room, catching a bus, filling out a form, asking for help without shame.",
-  },
-  {
-    slug: "education",
-    title: "Education support",
-    image: "/images/living-room.jpg",
-    summary:
-      "Homework help, school advocacy, and a quiet place to think.",
-    details:
-      "We partner with schools and case workers so education doesn't fall through the cracks. Tutoring, transportation coordination, and a desk of one's own.",
-  },
-  {
-    slug: "wellness",
-    title: "Wellness & counseling",
-    image: "/images/counselor.jpg",
-    summary:
-      "A calm room, a listening adult, and care that meets a young person where they are.",
-    details:
-      "Emotional wellness is part of the home, not an add-on. We connect youth with counseling, teach regulation skills, and keep the house itself as a therapeutic environment.",
-  },
-  {
-    slug: "family",
-    title: "Family engagement",
-    image: "/images/dining.jpg",
-    summary:
-      "When it is safe and wanted, we help keep the thread between a young person and their people.",
-    details:
-      "Reunification is not always possible. Connection often is. We work with families, mentors, and natural supports at a pace that protects the youth first.",
-  },
-  {
-    slug: "transition",
-    title: "Transition to independence",
-    image: "/images/path-sunrise.jpg",
-    summary:
-      "A plan for the next home, the next school, the next job — written together, practiced here.",
-    details:
-      "Aging out should not mean falling off a cliff. We build step-down plans, document IDs and records, and stay in the picture through the first stretch of independence.",
-  },
 ] as const;
 
 export const faqs = [
   {
     q: "Who do you serve?",
-    a: "Youth who need a safe, stable residential home — including young people experiencing housing instability, family crisis, or a need for structured, supportive care. Exact eligibility will be confirmed with licensing and referral partners.",
+    a: "Youth ages 10–17 who need a safe, structured residential home — including young people facing housing instability, family crisis, or a need for 24-hour support. Exact eligibility will match Virginia licensing and referral partners.",
   },
   {
     q: "Is this a shelter or a group home?",
-    a: "Rise & Thrive is a residential group home: a live-in, family-style setting with 24-hour care. It is a home first. Shelter is what a home provides.",
+    a: "Rise & Thrive is a residential group home: a live-in, family-style setting. Shelter is what a home provides. We are not a drop-in or overnight-only program.",
   },
   {
-    q: "How do referrals work?",
-    a: "Families, case workers, and partner agencies can start with the Get Support form. We'll follow up with next steps, required documents, and whether we have an opening.",
+    q: "How does a young person get placed?",
+    a: "Families, case workers, and partner agencies start with the contact form or a phone call. We follow up about openings, required documents, and whether we are the right fit. We will never pretend we can take someone we cannot keep safe.",
   },
   {
     q: "Can I visit?",
-    a: "Yes — by appointment. A home has to stay a home, so we don't run drop-in tours. Reach out and we'll find a time.",
+    a: "Yes — by appointment. This is a residential home, not a storefront. We do not run drop-in tours.",
   },
   {
-    q: "How can I help if I'm not a clinician?",
-    a: "Meals, mentorship, yard work, school supplies, and monthly giving all keep the lights warm. Start on Get Involved.",
+    q: "Where is the home?",
+    a: "We serve youth in the Portsmouth, Virginia area. The street address is not published. A group home is still someone's house. We share the location when a visit is scheduled.",
   },
+  {
+    q: "Are you licensed?",
+    a: "We are a new program preparing for full operation and state licensing in Virginia. Capacity, ages, and referral pathways will be published in full once licensing is complete.",
+  },
+  {
+    q: "What about a crisis right now?",
+    a: "This is not a crisis line. If someone is in immediate danger, call 911. For a mental health crisis, call or text 988.",
+  },
+  {
+    q: "How can I help if I am not a clinician?",
+    a: "Write to us. Meals, mentoring, school supplies, and consistent volunteers all keep a house kind. We will tell you what we actually need.",
+  },
+] as const;
+
+export const staff = [
+  {
+    name: "Latrecia Russell",
+    role: "Owner / Executive Director · Youth Services Supervisor · Direct Care Staff",
+    image: "/staff/latrecia-russell.jpeg",
+  },
+  {
+    name: "Randall Jones",
+    role: "Co-Owner / Food Manager · Direct Care Staff",
+    image: "/staff/randall-jones.jpeg",
+  },
+] as const;
+
+export const mission =
+  "Our mission is to provide a safe, stable, and nurturing home where youth ages 10–17 can grow, heal, and build confidence. We are committed to creating a structured, supportive environment that empowers each young person to rise above challenges, develop positive life skills, and thrive in their future. Through compassion, consistency, and respect, we guide youth toward emotional well-being, personal development, and long-term success.";
+
+export const vision =
+  "A home in Portsmouth where every young person is safe enough to grow — and believed in enough to thrive.";
+
+export const overview =
+  "Rise & Thrive Support Services, LLC is a nurturing residential group home for youth ages 10–17. We provide a safe place where young people can grow, heal, and build confidence. Our home is built on structure, compassion, and genuine care — giving youth the stability they need to rise above challenges and thrive in their future. We are committed to a warm, welcoming environment that supports emotional well-being, personal development, and positive life skills. Our approach centers on respect, safety, and empowerment. We partner with families, agencies, and professionals who share our passion for helping young people succeed.";
+
+export const values = [
+  {
+    title: "Safety First",
+    body: "Physical, emotional, and psychological safety in every aspect of care.",
+  },
+  {
+    title: "Compassionate Care",
+    body: "We lead with empathy, kindness, and understanding.",
+  },
+  {
+    title: "Consistency & Structure",
+    body: "Predictable routines and clear expectations a young person can trust.",
+  },
+  {
+    title: "Respect for Every Youth",
+    body: "We honor each young person’s individuality and voice.",
+  },
+  {
+    title: "Positive Youth Development",
+    body: "We focus on strengths and encourage growth.",
+  },
+  {
+    title: "Trauma-Informed Approach",
+    body: "We respond with patience, understanding, and supportive strategies.",
+  },
+  {
+    title: "Family & Community Collaboration",
+    body: "We work alongside families and agencies.",
+  },
+  {
+    title: "Integrity & Accountability",
+    body: "We operate with honesty and professionalism.",
+  },
+  {
+    title: "Empowerment & Hope",
+    body: "We help youth believe in their potential and their future.",
+  },
+] as const;
+
+export const goals = [
+  "Emotional stability and healthy coping",
+  "Academic support and school engagement",
+  "Life skills and daily living",
+  "Positive behavior and accountability",
+  "Healthy social connections",
+  "Safety and a predictable environment",
+  "Future readiness and goal-setting",
+  "Family and community collaboration",
+  "Healing, strengths, and confidence",
+] as const;
+
+export const programs = [
+  {
+    slug: "residential",
+    title: "Residential care",
+    image: "/images/youth-porch.jpg",
+    body: "A live-in, family-style home for youth ages 10–17. A bedroom of their own, a shared table, and 24-hour care.",
+  },
+  {
+    slug: "daily",
+    title: "Daily structure",
+    image: "/images/youth-living.jpg",
+    body: "School mornings. Afternoon downtime. Shared dinner. A bedtime they can count on.",
+  },
+  {
+    slug: "emotional",
+    title: "Emotional support",
+    image: "/images/youth-homework.jpg",
+    body: "Trauma-informed adults and room for a young person to name feelings without being punished for having them.",
+  },
+  {
+    slug: "academic",
+    title: "Life skills",
+    image: "/images/youth-cooking.jpg",
+    body: "Cooking, laundry, calendars, asking for help. Practice now for the next home.",
+  },
+] as const;
+
+export const daily = [
+  { time: "Morning", body: "Wake, hygiene, breakfast, backpacks, a calm send-off to school." },
+  { time: "School day", body: "Attendance, advocacy, and check-ins. Tutoring when it is needed." },
+  { time: "Afternoon", body: "Snack, chores, recreation, and skill-building — cooking, communication, community." },
+  { time: "Evening", body: "Family-style dinner, homework, downtime, and a predictable bedtime." },
+] as const;
+
+export const admission = [
+  {
+    title: "Ages served",
+    body: "Youth ages 10–17 who need a safe, structured residential home.",
+  },
+  {
+    title: "How placement starts",
+    body: "Referrals from families, case workers, and partner agencies. We follow up honestly about openings and fit.",
+  },
+  {
+    title: "Licensing",
+    body: "We are a new program preparing for full operation and state licensing in Virginia. Criteria will be published in full once licensing is complete.",
+  },
+  {
+    title: "What we look for",
+    body: "A young person who can be kept safe in a group-home setting, with a plan we can honor. We will never pretend we can take someone we cannot keep safe.",
+  },
+] as const;
+
+export const safety = [
+  "24-hour awake or on-site supervision according to licensing standards",
+  "Trauma-informed de-escalation — no humiliation, no fear as a tool",
+  "Medication, visitors, and off-site movement logged and supervised",
+  "Fire, emergency, and missing-from-care protocols posted and practiced",
+  "Confidentiality for every young person’s story",
 ] as const;
 
 export function publicContact() {
   return {
     phone: process.env.NEXT_PUBLIC_PHONE ?? "(555) 014-7743",
     email: process.env.NEXT_PUBLIC_EMAIL ?? "hello@riseandthrive.example",
-    addressLine1: process.env.NEXT_PUBLIC_ADDRESS_LINE1 ?? "123 Hope Lane",
-    addressLine2: process.env.NEXT_PUBLIC_ADDRESS_LINE2 ?? "Your City, ST 00000",
+    addressLine1: process.env.NEXT_PUBLIC_ADDRESS_LINE1 ?? "2114 Nashville Ave",
+    addressLine2: process.env.NEXT_PUBLIC_ADDRESS_LINE2 ?? "Portsmouth, VA 23704",
     hours: process.env.NEXT_PUBLIC_HOURS ?? "Office hours by appointment",
   };
 }
+
+export const mapQuery = encodeURIComponent("2114 Nashville Ave, Portsmouth, VA 23704");

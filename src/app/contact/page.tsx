@@ -6,7 +6,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Contact",
-  description: "Write, call, or visit Rise & Thrive Support Services.",
+  description: "Write or call Rise & Thrive Support Services.",
 };
 
 export default function ContactPage() {
@@ -14,54 +14,50 @@ export default function ContactPage() {
   return (
     <>
       <PageHero
-        compact
         eyebrow="Contact"
-        title="We're here. Start anywhere."
-        lede="Office hours by appointment. The house stays a house — we don't do drop-in tours."
-        image="/images/counselor.jpg"
-        imageAlt="A counselor sitting in a sunlit office, listening"
-        imagePosition="object-[center_20%]"
+        title="Start with a conversation."
+        lede="This is a residential home, not a storefront. We do not publish drop-in hours or a public walk-up."
+        image="/images/youth-talk.jpg"
+        imageAlt="A counselor and a young person talking in a living room"
       />
 
       <Section className="grid lg:grid-cols-2 gap-12">
         <Reveal>
-          <p className="eyebrow">Find us</p>
-          <h2 className="font-display mt-3 text-3xl text-forest">The door is a phone call away.</h2>
-          <address className="mt-8 not-italic space-y-6">
+          <p className="eyebrow text-gold-deep">Reach us</p>
+          <h2 className="font-display mt-3 text-3xl text-emerald">We will meet you where you are.</h2>
+          <p className="mt-4 text-ink/80 leading-relaxed">
+            Families, case workers, and partners can write or call. If a young person needs
+            placement, tell us who and how soon. We will be honest about openings.
+          </p>
+          <address className="mt-8 not-italic space-y-5">
             <p>
-              <span className="block text-sm text-muted">Phone</span>
-              <a className="text-xl text-forest" href={`tel:${contact.phone.replace(/[^\d+]/g, "")}`}>
+              <span className="block text-xs tracking-[0.2em] uppercase text-muted">Phone</span>
+              <a className="text-xl text-emerald" href={`tel:${contact.phone.replace(/[^\d+]/g, "")}`}>
                 {contact.phone}
               </a>
             </p>
             <p>
-              <span className="block text-sm text-muted">Email</span>
-              <a className="text-xl text-forest break-all" href={`mailto:${contact.email}`}>
+              <span className="block text-xs tracking-[0.2em] uppercase text-muted">Email</span>
+              <a className="text-xl text-emerald break-all" href={`mailto:${contact.email}`}>
                 {contact.email}
               </a>
             </p>
             <p>
-              <span className="block text-sm text-muted">Address</span>
-              <span className="text-xl text-forest">
-                {contact.addressLine1}
-                <br />
-                {contact.addressLine2}
-              </span>
+              <span className="block text-xs tracking-[0.2em] uppercase text-muted">Region</span>
+              <span className="text-xl text-emerald">{contact.addressLine2}</span>
             </p>
             <p>
-              <span className="block text-sm text-muted">Hours</span>
-              <span className="text-xl text-forest">{contact.hours}</span>
+              <span className="block text-xs tracking-[0.2em] uppercase text-muted">Hours</span>
+              <span className="text-xl text-emerald">{contact.hours}</span>
             </p>
           </address>
-          <div className="mt-10 overflow-hidden rounded-[1.6rem] border border-forest/10 bg-cream-deep min-h-52 grid place-items-center text-center p-8">
-            <p className="text-muted max-w-xs">
-              Map embed will go here once the address is confirmed. Pin a place that deserves a
-              porch.
-            </p>
-          </div>
+          <p className="mt-8 text-sm text-muted max-w-md">
+            Street address is held back on purpose. A group home is still someone&apos;s house.
+            Visits are by appointment after we talk.
+          </p>
         </Reveal>
-        <Reveal delay={0.1} className="rounded-[2rem] border border-forest/10 bg-paper p-6 sm:p-8">
-          <InquiryForm kind="contact" />
+        <Reveal delay={0.08} className="border border-gold/30 bg-champagne p-6 sm:p-8">
+          <InquiryForm />
         </Reveal>
       </Section>
     </>

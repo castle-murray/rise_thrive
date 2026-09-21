@@ -4,45 +4,7 @@ import { Button } from "@/components/Button";
 import { cn } from "@/lib/cn";
 import { useState, type FormEvent } from "react";
 
-export type InquiryKind = "contact" | "referral" | "volunteer";
-
-const copy: Record<
-  InquiryKind,
-  { title: string; submit: string; success: string; subjects: string[] }
-> = {
-  contact: {
-    title: "Write to us",
-    submit: "Send message",
-    success: "Thank you. We'll be in touch soon.",
-    subjects: ["General question", "Visit request", "Media", "Something else"],
-  },
-  referral: {
-    title: "Start a referral",
-    submit: "Submit referral",
-    success: "We received your referral request. A team member will follow up.",
-    subjects: [
-      "Youth in need of placement",
-      "Case worker referral",
-      "Family inquiry",
-      "Emergency / crisis",
-    ],
-  },
-  volunteer: {
-    title: "Volunteer with us",
-    submit: "Offer my time",
-    success: "We're grateful. We'll reach out about next steps.",
-    subjects: [
-      "Mentoring",
-      "Meals & kitchen",
-      "House & garden",
-      "Education support",
-      "Professional skills",
-    ],
-  },
-};
-
-export function InquiryForm({ kind = "contact" }: { kind?: InquiryKind }) {
-  const meta = copy[kind];
+export function InquiryForm() {
   const [status, setStatus] = useState<"idle" | "sending" | "ok" | "error">("idle");
   const [error, setError] = useState("");
 
@@ -61,7 +23,6 @@ export function InquiryForm({ kind = "contact" }: { kind?: InquiryKind }) {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          kind,
           name: data.get("name"),
           email: data.get("email"),
           phone: data.get("phone"),
@@ -69,30 +30,29 @@ export function InquiryForm({ kind = "contact" }: { kind?: InquiryKind }) {
           message: data.get("message"),
         }),
       });
-      if (!res.ok) throw new Error("Request failed");
+      if (!res.ok) throw new Error("fail");
       setStatus("ok");
       form.reset();
     } catch {
       setStatus("error");
-      setError("Something didn't send. Please try again, or call us.");
+      setError("Something did not send. Please try again, or call us.");
     }
   }
 
   if (status === "ok") {
     return (
-      <div className="rounded-3xl border border-forest/15 bg-paper p-8 text-center">
-        <p className="font-display text-2xl text-forest">{meta.success}</p>
-        <p className="mt-2 text-muted">You can close this page, or keep looking around.</p>
+      <div className="border border-gold/40 bg-champagne p-8 text-center">
+        <p className="font-display text-2xl text-emerald">Thank you. We will be in touch.</p>
       </div>
     );
   }
 
   const field =
-    "w-full rounded-2xl border border-forest/15 bg-paper px-4 py-3 text-ink placeholder:text-muted/70 outline-none transition focus:border-forest focus:ring-2 focus:ring-forest/20";
+    "w-full border border-emerald/15 bg-ivory px-4 py-3 outline-none focus:border-gold focus:ring-2 focus:ring-gold/30";
 
   return (
     <form onSubmit={onSubmit} className="space-y-4" noValidate>
-      <p className="font-display text-2xl text-forest">{meta.title}</p>
+      <p className="font-display text-2xl text-emerald">Write to us</p>
       <div className="grid sm:grid-cols-2 gap-4">
         <label className="block text-sm">
           <span className="mb-1.5 block text-muted">Name</span>
@@ -109,13 +69,13 @@ export function InquiryForm({ kind = "contact" }: { kind?: InquiryKind }) {
           <input className={field} name="phone" type="tel" autoComplete="tel" />
         </label>
         <label className="block text-sm">
-          <span className="mb-1.5 block text-muted">
-            {kind === "volunteer" ? "How you'd like to help" : "Subject"}
-          </span>
-          <select className={field} name="subject" defaultValue={meta.subjects[0]}>
-            {meta.subjects.map((s) => (
-              <option key={s}>{s}</option>
-            ))}
+          <span className="mb-1.5 block text-muted">Subject</span>
+          <select className={field} name="subject" defaultValue="General question">
+            <option>General question</option>
+            <option>Referral / placement</option>
+            <option>Family inquiry</option>
+            <option>Agency partnership</option>
+            <option>Visit request</option>
           </select>
         </label>
       </div>
@@ -127,12 +87,12 @@ export function InquiryForm({ kind = "contact" }: { kind?: InquiryKind }) {
         <input name="company" tabIndex={-1} autoComplete="off" />
       </div>
       {status === "error" && (
-        <p className="text-sm text-terracotta" role="alert">
+        <p className="text-sm text-red-800" role="alert">
           {error}
         </p>
       )}
-      <Button type="submit" size="lg" disabled={status === "sending"} className="w-full sm:w-auto">
-        {status === "sending" ? "Sending…" : meta.submit}
+      <Button type="submit" size="lg" disabled={status === "sending"}>
+        {status === "sending" ? "Sending…" : "Send message"}
       </Button>
     </form>
   );

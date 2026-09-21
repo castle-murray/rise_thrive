@@ -3,43 +3,38 @@ import Link from "next/link";
 import type { ComponentProps } from "react";
 
 const variants = {
-  primary:
-    "bg-forest text-cream hover:bg-forest-deep shadow-[0_10px_24px_-12px_rgba(44,90,60,0.7)]",
-  gold: "bg-gold text-forest-deep hover:bg-[#d4b56a]",
-  cream:
-    "bg-cream text-forest hover:bg-paper border border-cream/20",
+  gold: "bg-gold text-emerald-deep hover:bg-gold-bright shadow-[0_10px_30px_-12px_rgba(201,162,39,0.7)]",
+  navy: "bg-navy text-champagne hover:bg-[#15283f] border border-gold/30",
   ghost:
-    "bg-transparent text-inherit border border-current/30 hover:bg-white/10",
-  terracotta: "bg-terracotta text-cream hover:bg-[#b85c3e]",
+    "bg-transparent text-champagne border border-gold/50 hover:bg-gold/10",
+  outline:
+    "bg-transparent text-emerald border border-emerald/30 hover:border-gold hover:text-gold-deep",
 } as const;
 
 const sizes = {
   sm: "h-10 px-4 text-sm",
   md: "h-12 px-5 text-[0.95rem]",
-  lg: "h-14 px-6 text-base",
+  lg: "h-14 px-7 text-base",
 } as const;
 
-type Variant = keyof typeof variants;
-type Size = keyof typeof sizes;
-
 const base =
-  "inline-flex items-center justify-center gap-2 rounded-full font-medium tracking-wide transition-all duration-300 ease-out active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold";
+  "inline-flex items-center justify-center gap-2 rounded-sm font-medium tracking-[0.14em] uppercase transition-all duration-300 active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold";
 
 export function Button({
   className,
-  variant = "primary",
+  variant = "gold",
   size = "md",
   href,
   ...props
 }: ComponentProps<"button"> & {
-  variant?: Variant;
-  size?: Size;
+  variant?: keyof typeof variants;
+  size?: keyof typeof sizes;
   href?: string;
 }) {
   const cls = cn(base, variants[variant], sizes[size], className);
   if (href) {
     return (
-      <Link href={href} className={cls}>
+      <Link href={href} className={cls} onClick={props.onClick as never}>
         {props.children}
       </Link>
     );

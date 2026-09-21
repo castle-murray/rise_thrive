@@ -1,16 +1,13 @@
-# Rise & Thrive Support Services
+# Sample 2 — emerald, gold, photography
 
-Website for **Rise & Thrive Support Services, LLC** — a residential group home for youth ages 10–17.
+Second design pass for **Rise & Thrive Support Services, LLC**, following `../direction.md`.
+
+- Emerald / navy / gold (dark lockup)
+- Photo-first like sample 3: youth in the house, staff portraits, everyday life
+- Cinzel + Outfit
+- Pages: Home, About, Programs, Our people, Residential, FAQ, Contact
 
 ```bash
-cp .env.example .env.local
 npm install
-npm run dev
+npm run dev -- --port 3000
 ```
-
-Open [http://localhost:3000](http://localhost:3000).
-
-Client brief: `direction.md`  
-Logos: `newlogos.jpeg`, `basic_logo.jpeg`
-
-Secrets stay in `.env.local`. Use `.env.example` as the template.

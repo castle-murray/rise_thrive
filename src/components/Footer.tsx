@@ -5,75 +5,59 @@ import Link from "next/link";
 export function Footer() {
   const contact = publicContact();
   const year = new Date().getFullYear();
-
   return (
-    <footer className="bg-forest-deep text-cream mt-auto">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 py-14 sm:py-16 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+    <footer className="bg-navy text-champagne mt-auto">
+      <div className="h-px gold-rule" />
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 py-14 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
         <div className="lg:col-span-2">
           <Link href="/" className="inline-flex items-center gap-3">
-            <span className="grid place-items-center size-12 rounded-full border border-cream/25">
-              <LogoMark className="size-9" tone="cream" />
-            </span>
+            <LogoMark className="h-12 w-16" />
             <span>
-              <span className="font-display block text-xl">{site.shortName}</span>
-              <span className="text-[0.65rem] tracking-[0.18em] uppercase text-cream/60">
+              <span className="font-display block text-lg text-gold-bright">{site.shortName}</span>
+              <span className="text-[0.62rem] tracking-[0.2em] uppercase text-champagne/60">
                 Support Services, LLC
               </span>
             </span>
           </Link>
-          <p className="mt-4 max-w-md text-cream/75 leading-relaxed">
-            {site.tagline} {site.descriptor}.
-          </p>
+          <p className="mt-4 max-w-md text-champagne/70 leading-relaxed">{site.tagline}</p>
+          <p className="mt-1 text-sm text-champagne/55">{site.descriptor}</p>
         </div>
-
         <div>
-          <p className="eyebrow text-sage">Visit</p>
-          <ul className="mt-3 space-y-2 text-sm text-cream/80">
+          <p className="eyebrow">Explore</p>
+          <ul className="mt-3 space-y-2 text-sm">
             {nav.map((item) => (
               <li key={item.href}>
-                <Link href={item.href} className="hover:text-cream transition-colors">
+                <Link href={item.href} className="text-champagne/75 hover:text-gold-bright">
                   {item.label}
                 </Link>
               </li>
             ))}
           </ul>
         </div>
-
         <div>
-          <p className="eyebrow text-sage">Talk with us</p>
-          <address className="mt-3 not-italic text-sm text-cream/80 space-y-2">
+          <p className="eyebrow">Visit</p>
+          <address className="mt-3 not-italic text-sm text-champagne/75 space-y-2">
             <p>
-              <a className="hover:text-cream" href={`tel:${contact.phone.replace(/[^\d+]/g, "")}`}>
-                {contact.phone}
-              </a>
+              <a href={`tel:${contact.phone.replace(/[^\d+]/g, "")}`}>{contact.phone}</a>
             </p>
             <p>
-              <a className="hover:text-cream" href={`mailto:${contact.email}`}>
-                {contact.email}
-              </a>
+              <a href={`mailto:${contact.email}`}>{contact.email}</a>
             </p>
-            <p>
-              {contact.addressLine1}
-              <br />
-              {contact.addressLine2}
+            <p>{contact.addressLine2}</p>
+            <p className="text-champagne/50 text-xs pt-1">
+              A residential home — not a public storefront.
             </p>
-            <p>{contact.hours}</p>
           </address>
         </div>
       </div>
-      <div className="border-t border-cream/10">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 py-5 flex flex-col sm:flex-row gap-2 sm:items-center sm:justify-between text-xs text-cream/55">
+      <div className="border-t border-gold/15">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 py-5 flex flex-col sm:flex-row gap-2 sm:justify-between text-xs text-champagne/50">
           <p>
-            © {year} {site.legalName}. All rights reserved.
+            © {year} {site.legalName}
           </p>
-          <p className="flex gap-4">
-            <Link href="/privacy" className="hover:text-cream">
-              Privacy
-            </Link>
-            <Link href="/contact" className="hover:text-cream">
-              Contact
-            </Link>
-          </p>
+          <Link href="/privacy" className="hover:text-gold-bright">
+            Privacy
+          </Link>
         </div>
       </div>
     </footer>

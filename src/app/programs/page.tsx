@@ -1,70 +1,77 @@
 import { Button } from "@/components/Button";
 import { PageHero, Section } from "@/components/PageHero";
 import { Reveal } from "@/components/Reveal";
-import { programs } from "@/lib/site";
+import { daily, goals, programs } from "@/lib/site";
 import type { Metadata } from "next";
 import Image from "next/image";
 
 export const metadata: Metadata = {
-  title: "Programs",
+  title: "Programs & Services",
   description:
-    "Residential living, life skills, education support, wellness, family engagement, and transition to independence.",
+    "Residential care, daily structure, and emotional, behavioral, and academic support.",
 };
 
 export default function ProgramsPage() {
   return (
     <>
       <PageHero
-        eyebrow="Programs"
-        title="The whole day, held with care."
-        lede="A group home is more than a bed. It's the hours between — meals, homework, hard conversations, and the practice of becoming someone."
-        image="/images/living-room.jpg"
-        imageAlt="A calm living room with morning light"
-        imagePosition="object-[center_40%]"
+        eyebrow="Programs & services"
+        title="Trauma-informed care. Positive youth development. Individualized support."
+        lede="Daily programming includes emotional support, academic encouragement, healthy social interaction, and skill-building for the long term."
+        image="/images/youth-homework.jpg"
+        imageAlt="A teen working on homework with a counselor"
       />
 
       {programs.map((p, i) => (
-        <section
-          id={p.slug}
-          key={p.slug}
-          className={i % 2 === 1 ? "bg-paper" : "bg-cream"}
-        >
-          <Section className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
-            <Reveal className={i % 2 === 1 ? "md:order-2" : undefined}>
-              <div className="relative aspect-[4/3] overflow-hidden rounded-[2rem]">
-                <Image
-                  src={p.image}
-                  alt=""
-                  fill
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  className="object-cover"
-                />
+        <section key={p.slug} className={i % 2 ? "bg-champagne" : "bg-ivory"}>
+          <Section className="grid md:grid-cols-2 gap-10 items-center">
+            <Reveal className={i % 2 ? "md:order-2" : undefined}>
+              <div className="relative aspect-[4/3] overflow-hidden">
+                <Image src={p.image} alt="" fill className="object-cover" sizes="50vw" />
               </div>
             </Reveal>
-            <Reveal delay={0.08} className={i % 2 === 1 ? "md:order-1" : undefined}>
-              <p className="eyebrow">0{i + 1}</p>
-              <h2 className="font-display mt-3 text-3xl sm:text-4xl text-forest">{p.title}</h2>
-              <p className="mt-4 text-lg text-ink/80 leading-relaxed">{p.details}</p>
+            <Reveal delay={0.08}>
+              <p className="eyebrow text-gold-deep">0{i + 1}</p>
+              <h2 className="font-display mt-3 text-3xl text-emerald">{p.title}</h2>
+              <div className="mt-3 h-px w-16 bg-gold" />
+              <p className="mt-4 text-lg text-ink/80 leading-relaxed">{p.body}</p>
             </Reveal>
           </Section>
         </section>
       ))}
 
-      <Section className="text-center max-w-2xl">
-        <Reveal>
-          <h2 className="font-display text-3xl sm:text-4xl text-forest">
-            Licensing and program details will land here.
-          </h2>
-          <p className="mt-4 text-muted leading-relaxed">
-            Capacity, ages served, and referral pathways are being finalized. If you need
-            placement now, start a conversation — we&apos;ll be honest about what we can offer.
-          </p>
-          <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
-            <Button href="/get-support">Get support</Button>
-            <Button href="/contact" variant="ghost" className="text-forest">
-              Ask a question
-            </Button>
+      <section className="bg-navy text-champagne">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 py-16">
+          <Reveal>
+            <p className="eyebrow">A day in the house</p>
+            <h2 className="font-display mt-3 text-3xl sm:text-4xl">Daily structure</h2>
+          </Reveal>
+          <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {daily.map((d) => (
+              <div key={d.time} className="border border-gold/25 p-5">
+                <h3 className="font-display text-xl text-gold-bright">{d.time}</h3>
+                <p className="mt-3 text-sm text-champagne/75 leading-relaxed">{d.body}</p>
+              </div>
+            ))}
           </div>
+        </div>
+      </section>
+
+      <Section>
+        <Reveal>
+          <p className="eyebrow text-gold-deep">Program goals</p>
+          <h2 className="font-display mt-3 text-3xl text-emerald">What progress looks like.</h2>
+          <ul className="mt-8 grid sm:grid-cols-2 gap-3">
+            {goals.map((g) => (
+              <li key={g} className="flex gap-3 text-ink/80">
+                <span className="mt-2 size-1.5 shrink-0 rounded-full bg-gold" />
+                {g}
+              </li>
+            ))}
+          </ul>
+          <Button href="/contact" className="mt-10">
+            Start a conversation
+          </Button>
         </Reveal>
       </Section>
     </>
