@@ -64,6 +64,11 @@ export const staff = [
     role: "Co-Owner / Food Manager · Direct Care Staff",
     image: "/staff/randall-jones.jpeg",
   },
+  {
+    name: "Bryce Russell",
+    role: "Counselor",
+    image: "/staff/bryce-russell.jpeg",
+  },
 ] as const;
 
 export const mission =
