@@ -37,7 +37,7 @@ export const faqs = [
   },
   {
     q: "Where is the home?",
-    a: "We serve youth in the Portsmouth, Virginia area. The street address is not published. A group home is still someone's house. We share the location when a visit is scheduled.",
+    a: "We are at 2114 Nashville Ave., Portsmouth, VA 23701. Visits are by appointment — this is a residential home, not a walk-in storefront. Start on the Contact page to schedule.",
   },
   {
     q: "Are you licensed?",
@@ -224,8 +224,7 @@ export const safety = [
 export function publicContact() {
   return {
     phone: process.env.NEXT_PUBLIC_PHONE ?? "757.581.9665",
-    // Empty until Sean provides a real public inbox — UI shows "Email coming soon".
-    email: process.env.NEXT_PUBLIC_EMAIL ?? "",
+    email: process.env.NEXT_PUBLIC_EMAIL ?? "hello@riseandthrivegh.info",
     addressLine1: process.env.NEXT_PUBLIC_ADDRESS_LINE1 ?? "2114 Nashville Ave.",
     addressLine2: process.env.NEXT_PUBLIC_ADDRESS_LINE2 ?? "Portsmouth, VA 23701",
     hours: process.env.NEXT_PUBLIC_HOURS ?? "Office hours by appointment",

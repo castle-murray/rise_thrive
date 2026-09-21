@@ -47,8 +47,9 @@ export default function ContactPage() {
               )}
             </p>
             <p>
-              <span className="block text-xs tracking-[0.2em] uppercase text-muted">Region</span>
-              <span className="text-xl text-emerald">{contact.addressLine2}</span>
+              <span className="block text-xs tracking-[0.2em] uppercase text-muted">Address</span>
+              <span className="text-xl text-emerald block">{contact.addressLine1}</span>
+              <span className="text-xl text-emerald block">{contact.addressLine2}</span>
             </p>
             <p>
               <span className="block text-xs tracking-[0.2em] uppercase text-muted">Hours</span>
@@ -56,8 +57,7 @@ export default function ContactPage() {
             </p>
           </address>
           <p className="mt-8 text-sm text-muted max-w-md">
-            Street address is held back on purpose. A group home is still someone&apos;s house.
-            Visits are by appointment after we talk.
+            This is a residential home, not a walk-in storefront. Visits are by appointment after we talk.
           </p>
         </Reveal>
         <Reveal delay={0.08} className="border border-gold/30 bg-champagne p-6 sm:p-8">

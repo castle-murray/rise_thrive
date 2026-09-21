@@ -47,9 +47,13 @@ export function Footer() {
                 <span>Email coming soon</span>
               )}
             </p>
-            <p>{contact.addressLine2}</p>
+            <p>
+              {contact.addressLine1}
+              <br />
+              {contact.addressLine2}
+            </p>
             <p className="text-champagne/50 text-xs pt-1">
-              A residential home — not a public storefront.
+              A residential home — visits by appointment.
             </p>
           </address>
         </div>
