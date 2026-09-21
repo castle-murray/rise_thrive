@@ -38,9 +38,13 @@ export default function ContactPage() {
             </p>
             <p>
               <span className="block text-xs tracking-[0.2em] uppercase text-muted">Email</span>
-              <a className="text-xl text-emerald break-all" href={`mailto:${contact.email}`}>
-                {contact.email}
-              </a>
+              {contact.email ? (
+                <a className="text-xl text-emerald break-all" href={`mailto:${contact.email}`}>
+                  {contact.email}
+                </a>
+              ) : (
+                <span className="text-xl text-emerald">Email coming soon</span>
+              )}
             </p>
             <p>
               <span className="block text-xs tracking-[0.2em] uppercase text-muted">Region</span>

@@ -41,7 +41,11 @@ export function Footer() {
               <a href={`tel:${contact.phone.replace(/[^\d+]/g, "")}`}>{contact.phone}</a>
             </p>
             <p>
-              <a href={`mailto:${contact.email}`}>{contact.email}</a>
+              {contact.email ? (
+                <a href={`mailto:${contact.email}`}>{contact.email}</a>
+              ) : (
+                <span>Email coming soon</span>
+              )}
             </p>
             <p>{contact.addressLine2}</p>
             <p className="text-champagne/50 text-xs pt-1">

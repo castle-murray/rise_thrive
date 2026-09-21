@@ -53,13 +53,12 @@ const jsonLd = {
   description: site.summary,
   url,
   telephone: process.env.NEXT_PUBLIC_PHONE,
-  email: process.env.NEXT_PUBLIC_EMAIL,
   address: {
     "@type": "PostalAddress",
-    streetAddress: "2114 Nashville Ave",
+    streetAddress: "2114 Nashville Ave.",
     addressLocality: "Portsmouth",
     addressRegion: "VA",
-    postalCode: "23704",
+    postalCode: "23701",
     addressCountry: "US",
   },
 };

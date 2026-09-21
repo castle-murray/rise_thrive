@@ -223,12 +223,13 @@ export const safety = [
 
 export function publicContact() {
   return {
-    phone: process.env.NEXT_PUBLIC_PHONE ?? "(555) 014-7743",
-    email: process.env.NEXT_PUBLIC_EMAIL ?? "hello@riseandthrive.example",
-    addressLine1: process.env.NEXT_PUBLIC_ADDRESS_LINE1 ?? "2114 Nashville Ave",
-    addressLine2: process.env.NEXT_PUBLIC_ADDRESS_LINE2 ?? "Portsmouth, VA 23704",
+    phone: process.env.NEXT_PUBLIC_PHONE ?? "757.581.9665",
+    // Empty until Sean provides a real public inbox — UI shows "Email coming soon".
+    email: process.env.NEXT_PUBLIC_EMAIL ?? "",
+    addressLine1: process.env.NEXT_PUBLIC_ADDRESS_LINE1 ?? "2114 Nashville Ave.",
+    addressLine2: process.env.NEXT_PUBLIC_ADDRESS_LINE2 ?? "Portsmouth, VA 23701",
     hours: process.env.NEXT_PUBLIC_HOURS ?? "Office hours by appointment",
   };
 }
 
-export const mapQuery = encodeURIComponent("2114 Nashville Ave, Portsmouth, VA 23704");
+export const mapQuery = encodeURIComponent("2114 Nashville Ave., Portsmouth, VA 23701");
