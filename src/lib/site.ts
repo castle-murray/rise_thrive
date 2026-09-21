@@ -15,7 +15,6 @@ export const nav = [
   { href: "/programs", label: "Programs" },
   { href: "/staff", label: "Our people" },
   { href: "/faq", label: "FAQ" },
-  { href: "/contact", label: "Contact" },
 ] as const;
 
 export const faqs = [
