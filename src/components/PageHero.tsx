@@ -8,6 +8,7 @@ export function PageHero({
   lede,
   image,
   imageAlt,
+  imagePosition = "object-[center_28%]",
   children,
 }: {
   eyebrow?: string;
@@ -15,11 +16,20 @@ export function PageHero({
   lede?: string;
   image: string;
   imageAlt: string;
+  /** Tailwind object-position class; default biases toward faces in the upper frame. */
+  imagePosition?: string;
   children?: ReactNode;
 }) {
   return (
-    <section className="relative isolate min-h-[58svh] sm:min-h-[64svh] overflow-hidden text-champagne">
-      <Image src={image} alt={imageAlt} fill priority sizes="100vw" className="object-cover kenburns" />
+    <section className="relative isolate min-h-[70svh] sm:min-h-[78svh] overflow-hidden text-champagne">
+      <Image
+        src={image}
+        alt={imageAlt}
+        fill
+        priority
+        sizes="100vw"
+        className={cn("object-cover kenburns", imagePosition)}
+      />
       <div className="absolute inset-0 bg-gradient-to-t from-emerald-deep via-emerald-deep/55 to-emerald-deep/20" />
       <div className="relative mx-auto max-w-6xl px-4 sm:px-6 pt-28 sm:pt-36 pb-12 sm:pb-16">
         {eyebrow && <p className="eyebrow rise-in">{eyebrow}</p>}
