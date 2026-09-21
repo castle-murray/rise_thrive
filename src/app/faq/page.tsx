@@ -16,8 +16,8 @@ export default function FaqPage() {
         eyebrow="FAQ"
         title="Questions families and case workers actually ask."
         lede="Honest answers for a new program. If yours is not here, write to us — we would rather talk than guess."
-        image="/images/youth-homework.jpg"
-        imageAlt="A teen working on homework with a counselor"
+        image="/images/youth-faq.jpg"
+        imageAlt="A counselor talking with a teen in the living room"
       />
       <Section className="max-w-3xl">
         <div className="divide-y divide-gold/30">
