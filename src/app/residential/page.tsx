@@ -17,7 +17,7 @@ export default function ResidentialPage() {
         eyebrow="The home"
         title={`Youth ages ${site.ages}, in a house that is meant to feel like a house.`}
         lede="A home-like environment that promotes healing and personal growth. Visits by appointment — this is not a storefront."
-        image="/images/youth-porch.jpg"
+        image="/images/youth-porch-qsi7n.jpg"
         imageAlt="Youth sitting on the porch of the group home"
       />
 

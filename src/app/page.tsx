@@ -12,7 +12,7 @@ export default function Home() {
     <>
       <section className="relative isolate min-h-[100svh] overflow-hidden text-champagne">
         <Image
-          src="/images/youth-porch.jpg"
+          src="/images/youth-porch-qsi7n.jpg"
           alt="Three teenagers sitting on a porch with backpacks, laughing after school"
           fill
           priority
