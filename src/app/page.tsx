@@ -138,7 +138,7 @@ export default function Home() {
             Meet the team →
           </Link>
         </div>
-        <Stagger className="mt-10 grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
+        <Stagger className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
           {staff.map((s) => (
             <StaggerItem key={s.name}>
               <Link href="/staff" className="block group">

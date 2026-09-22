@@ -27,7 +27,7 @@ export default function StaffPage() {
             Names you can put with the house.
           </h2>
         </Reveal>
-        <Stagger className="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+        <Stagger className="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
           {staff.map((person) => (
             <StaggerItem key={person.name}>
               <div className="relative aspect-[3/4] overflow-hidden bg-champagne">
@@ -35,7 +35,7 @@ export default function StaffPage() {
                   src={person.image}
                   alt={`Portrait of ${person.name}`}
                   fill
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                   className="object-cover object-top"
                 />
               </div>

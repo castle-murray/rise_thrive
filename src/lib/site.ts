@@ -68,6 +68,11 @@ export const staff = [
     role: "Counselor",
     image: "/staff/bryce-russell.jpeg",
   },
+  {
+    name: "Kenneth Trotter",
+    role: "Program Development Consultant",
+    image: "/staff/kenneth-trotter.jpeg",
+  },
 ] as const;
 
 export const mission =
