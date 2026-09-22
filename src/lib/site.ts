@@ -139,7 +139,7 @@ export const programs = [
   {
     slug: "residential",
     title: "Residential care",
-    image: "/images/youth-porch-qsi7n.jpg",
+    image: "/images/residential-care-o5n54.webp",
     body: "A live-in, family-style home for youth ages 10–17. A bedroom of their own, a shared table, and 24-hour care.",
   },
   {
