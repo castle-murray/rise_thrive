@@ -53,7 +53,7 @@ export default function Home() {
         </Reveal>
         <Reveal delay={0.08} className="relative aspect-[4/3] overflow-hidden">
           <Image
-            src="/images/youth-meal-v2.jpg"
+            src="/images/youth-meal-lovlr.jpg"
             alt="Youth and a house parent sharing a meal around the table"
             fill
             sizes="(max-width: 1024px) 100vw, 50vw"

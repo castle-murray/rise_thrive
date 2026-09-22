@@ -61,7 +61,7 @@ export const staff = [
   {
     name: "Randall Jones",
     role: "Co-Owner / Food Manager · Direct Care Staff",
-    image: "/staff/randall-jones.jpeg",
+    image: "/staff/randall-jones-pvg8b.jpeg",
   },
   {
     name: "Bryce Russell",
