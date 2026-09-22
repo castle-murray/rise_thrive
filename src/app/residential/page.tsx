@@ -35,7 +35,7 @@ export default function ResidentialPage() {
         </Reveal>
         <Reveal delay={0.08} className="relative aspect-[4/3] overflow-hidden">
           <Image
-            src="/images/youth-meal.jpg"
+            src="/images/youth-meal-v2.jpg"
             alt="Youth sharing a meal with a house parent"
             fill
             className="object-cover"
