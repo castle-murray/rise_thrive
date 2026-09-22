@@ -145,13 +145,13 @@ export const programs = [
   {
     slug: "daily",
     title: "Daily structure",
-    image: "/images/youth-living.jpg",
+    image: "/images/daily-structure-jbi7s.webp",
     body: "School mornings. Afternoon downtime. Shared dinner. A bedtime they can count on.",
   },
   {
     slug: "emotional",
     title: "Emotional support",
-    image: "/images/youth-homework.jpg",
+    image: "/images/emotional-support-qew32.webp",
     body: "Trauma-informed adults and room for a young person to name feelings without being punished for having them.",
   },
   {
