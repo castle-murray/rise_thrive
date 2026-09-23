@@ -30,8 +30,8 @@ export default function AboutPage() {
         </Reveal>
         <Reveal delay={0.08} className="relative aspect-[4/3] overflow-hidden">
           <Image
-            src="/images/youth-garden.jpg"
-            alt="Youth and a staff member planting flowers together"
+            src="/images/who-we-are-icgug.webp"
+            alt="Youth and a house parent preparing a snack together at home"
             fill
             className="object-cover"
             sizes="50vw"
