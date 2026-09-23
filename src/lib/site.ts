@@ -157,7 +157,7 @@ export const programs = [
   {
     slug: "academic",
     title: "Life skills",
-    image: "/images/youth-cooking.jpg",
+    image: "/images/life-skills-118aa.webp",
     body: "Cooking, laundry, calendars, asking for help. Practice now for the next home.",
   },
 ] as const;
