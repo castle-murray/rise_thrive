@@ -17,7 +17,7 @@ export default function AboutPage() {
         eyebrow="About us"
         title="Built on structure, compassion, and genuine care."
         lede="A new residential group home for youth ages 10–17, preparing for full operation and Virginia licensing."
-        image="/images/youth-school.jpg"
+        image="/images/about-hero-erdx1.webp"
         imageAlt="A teenager with a backpack leaving for school"
       />
 
