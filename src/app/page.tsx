@@ -53,8 +53,8 @@ export default function Home() {
         </Reveal>
         <Reveal delay={0.08} className="relative aspect-[4/3] overflow-hidden">
           <Image
-            src="/images/youth-meal-lovlr.jpg"
-            alt="Youth and a house parent sharing a meal around the table"
+            src="/images/homepage-car-wash-eqt8j.webp"
+            alt="An adult and a youth washing a car together outdoors"
             fill
             sizes="(max-width: 1024px) 100vw, 50vw"
             className="object-cover"
