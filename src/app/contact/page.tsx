@@ -17,7 +17,7 @@ export default function ContactPage() {
         eyebrow="Contact"
         title="Start with a conversation."
         lede="This is a residential home, not a storefront. We do not publish drop-in hours or a public walk-up."
-        image="/images/contact-hero-dq4gk.webp"
+        image="/images/contact-hero-4be3r.webp"
         imageAlt="A house parent and teen sharing a quiet moment on the couch at home"
       />
 
