@@ -66,12 +66,12 @@ export const staff = [
   {
     name: "Bryce Russell",
     role: "Counselor",
-    image: "/staff/bryce-russell.jpeg",
+    image: "/staff/bryce-russell-2sh7e.webp",
   },
   {
     name: "Kenneth Trotter",
     role: "Program Development Consultant",
-    image: "/staff/kenneth-trotter.jpeg",
+    image: "/staff/kenneth-trotter-vzj6e.webp",
   },
 ] as const;
 
