@@ -18,8 +18,8 @@ export default function ProgramsPage() {
         eyebrow="Programs & services"
         title="Trauma-informed care. Positive youth development. Individualized support."
         lede="Daily programming includes emotional support, academic encouragement, healthy social interaction, and skill-building for the long term."
-        image="/images/youth-homework.jpg"
-        imageAlt="A teen working on homework with a counselor"
+        image="/images/programs-hero-fj3z8.webp"
+        imageAlt="A mentor and four youth working together around a classroom table"
       />
 
       {programs.map((p, i) => (
