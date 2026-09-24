@@ -57,7 +57,7 @@ export function Header() {
           : "bg-transparent",
       )}
     >
-      <div className="mx-auto flex h-16 sm:h-[4.4rem] max-w-6xl items-center justify-between gap-3 px-4 sm:px-6">
+      <div className="mx-auto flex h-[4.25rem] sm:h-[4.75rem] max-w-6xl items-center justify-between gap-3 px-4 sm:px-6">
         <span onClick={() => setOpen(false)}>
           <Logo />
         </span>
