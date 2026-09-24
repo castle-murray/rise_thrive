@@ -18,7 +18,7 @@ export function LogoMark({ className }: { className?: string }) {
 
 /**
  * RISE-1 revision: gold lockup + soft green backing glow that fades to transparent
- * (readable over busy heroes). No hard card, no ring plate, no deep-mark asset.
+ * (readable over busy heroes; glow sized larger per Sean tweak). No hard card, no ring plate, no deep-mark asset.
  */
 export function Logo({ compact = false, href = "/" }: { compact?: boolean; href?: string }) {
   return (
@@ -28,14 +28,15 @@ export function Logo({ compact = false, href = "/" }: { compact?: boolean; href?
         "relative flex items-center gap-2.5 min-w-0 group",
         // Soft radial green glow — falls off to transparent; no hard edges / ring
         "rounded-full",
-        compact ? "px-2 py-1" : "px-2.5 py-1.5 sm:px-3 sm:py-2",
-        "[background:radial-gradient(ellipse_at_center,rgba(14,61,44,0.78)_0%,rgba(8,38,28,0.42)_42%,rgba(8,38,28,0.12)_62%,transparent_78%)]",
+        // Bigger glow: more padding + larger ellipse + wider falloff
+        compact ? "px-3.5 py-2" : "px-5 py-3 sm:px-6 sm:py-3.5",
+        "[background:radial-gradient(ellipse_170%_145%_at_center,rgba(14,61,44,0.82)_0%,rgba(8,38,28,0.48)_32%,rgba(8,38,28,0.18)_55%,rgba(8,38,28,0.06)_72%,transparent_92%)]",
       )}
       aria-label={`${site.shortName} home`}
     >
       <LogoMark
         className={cn(
-          "shrink-0 object-contain drop-shadow-[0_2px_8px_rgba(8,38,28,0.55)]",
+          "shrink-0 object-contain drop-shadow-[0_3px_14px_rgba(8,38,28,0.6)]",
           compact ? "h-11 w-[3.5rem]" : "h-[3.4rem] w-[4.2rem] sm:h-[3.85rem] sm:w-[4.75rem]",
         )}
       />
