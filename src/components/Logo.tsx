@@ -33,7 +33,7 @@ export function Logo({
     <Link
       href={href}
       className={cn(
-        "relative flex items-center gap-2.5 min-w-0 group",
+        "relative flex items-center gap-2.5 min-w-0 group overflow-visible",
         compact ? "px-2 py-1" : "px-2.5 py-1.5",
       )}
       aria-label={`${site.shortName} home`}
@@ -43,12 +43,12 @@ export function Logo({
         aria-hidden
         className={cn(
           "pointer-events-none absolute left-1/2 top-1/2 -z-10 -translate-x-1/2 -translate-y-1/2 transition-opacity duration-500",
-          compact ? "h-[6.25rem] w-[13.5rem]" : "h-[7.25rem] w-[18.5rem] sm:h-[7.75rem] sm:w-[20rem]",
+          compact ? "h-[6.5rem] w-[16rem]" : "h-[7.5rem] w-[21rem] sm:h-[8rem] sm:w-[23rem]",
           halo ? "opacity-100" : "opacity-0",
         )}
         style={{
           background:
-            "radial-gradient(ellipse 68% 54% at 50% 50%, rgba(14,61,44,0.94) 0%, rgba(14,61,44,0.82) 38%, rgba(14,61,44,0.5) 58%, rgba(14,61,44,0.18) 76%, transparent 92%)",
+            "radial-gradient(ellipse 50% 50% at 50% 50%, rgba(14,61,44,0.94) 0%, rgba(14,61,44,0.82) 32%, rgba(14,61,44,0.48) 55%, rgba(14,61,44,0.14) 78%, transparent 100%)",
         }}
       />
       <LogoMark

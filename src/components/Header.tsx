@@ -46,7 +46,7 @@ export function Header() {
   return (
     <header
       className={cn(
-        "fixed inset-x-0 top-0 z-50 transition-colors duration-500",
+        "fixed inset-x-0 top-0 z-50 overflow-visible transition-colors duration-500",
         // Never use backdrop-blur while the menu is open: backdrop-filter makes
         // position:fixed descendants resolve against the header (~64px), which
         // clipped the mobile nav. Portal the overlay to document.body instead.
@@ -57,8 +57,8 @@ export function Header() {
           : "bg-transparent",
       )}
     >
-      <div className="mx-auto flex h-[4.25rem] sm:h-[4.75rem] max-w-6xl items-center justify-between gap-3 px-4 sm:px-6">
-        <span onClick={() => setOpen(false)}>
+      <div className="mx-auto flex h-[4.25rem] sm:h-[4.75rem] max-w-6xl items-center justify-between gap-3 overflow-visible px-4 sm:px-6">
+        <span className="relative overflow-visible" onClick={() => setOpen(false)}>
           <Logo halo={!scrolled && !open} />
         </span>
 
