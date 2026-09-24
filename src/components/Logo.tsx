@@ -20,20 +20,37 @@ export function LogoMark({ className }: { className?: string }) {
  * RISE-1 revision: gold lockup + soft green backing glow that fades to transparent
  * (readable over busy heroes; glow sized larger per Sean tweak). No hard card, no ring plate, no deep-mark asset.
  */
-export function Logo({ compact = false, href = "/" }: { compact?: boolean; href?: string }) {
+export function Logo({
+  compact = false,
+  href = "/",
+  halo = true,
+}: {
+  compact?: boolean;
+  href?: string;
+  halo?: boolean;
+}) {
   return (
     <Link
       href={href}
       className={cn(
         "relative flex items-center gap-2.5 min-w-0 group",
-        // Soft radial green glow — falls off to transparent; no hard edges / ring
-        "rounded-full",
-        // Bigger glow: more padding + larger ellipse + wider falloff
-        compact ? "px-3.5 py-2" : "px-5 py-3 sm:px-6 sm:py-3.5",
-        "[background:radial-gradient(ellipse_170%_145%_at_center,rgba(14,61,44,0.82)_0%,rgba(8,38,28,0.48)_32%,rgba(8,38,28,0.18)_55%,rgba(8,38,28,0.06)_72%,transparent_92%)]",
+        compact ? "px-2 py-1" : "px-2.5 py-1.5",
       )}
       aria-label={`${site.shortName} home`}
     >
+      {/* Glow sits larger than the lockup so the fade is never clipped to a pill. */}
+      <span
+        aria-hidden
+        className={cn(
+          "pointer-events-none absolute left-1/2 top-1/2 -z-10 -translate-x-1/2 -translate-y-1/2 transition-opacity duration-500",
+          compact ? "h-[6.25rem] w-[13.5rem]" : "h-[7.25rem] w-[18.5rem] sm:h-[7.75rem] sm:w-[20rem]",
+          halo ? "opacity-100" : "opacity-0",
+        )}
+        style={{
+          background:
+            "radial-gradient(ellipse 68% 54% at 50% 50%, rgba(14,61,44,0.94) 0%, rgba(14,61,44,0.82) 38%, rgba(14,61,44,0.5) 58%, rgba(14,61,44,0.18) 76%, transparent 92%)",
+        }}
+      />
       <LogoMark
         className={cn(
           "shrink-0 object-contain drop-shadow-[0_3px_14px_rgba(8,38,28,0.6)]",
