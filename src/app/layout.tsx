@@ -1,3 +1,4 @@
+import { allowIndexing, siteUrl } from "@/lib/url";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { site } from "@/lib/site";
@@ -18,10 +19,11 @@ const sans = Outfit({
   display: "swap",
 });
 
-const url = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+const url = siteUrl;
 
 export const metadata: Metadata = {
   metadataBase: new URL(url),
+  alternates: { canonical: "/" },
   title: {
     default: `${site.shortName} — ${site.tagline}`,
     template: `%s · ${site.shortName}`,
@@ -42,7 +44,9 @@ export const metadata: Metadata = {
     title: site.shortName,
     description: site.summary,
   },
-  robots: { index: true, follow: true },
+  robots: allowIndexing
+    ? { index: true, follow: true }
+    : { index: false, follow: false },
 };
 
 const jsonLd = {
