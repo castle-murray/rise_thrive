@@ -1,23 +1,94 @@
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
+// --- Abuse protection -------------------------------------------------------
+// NOTE: the rate limiter is in-memory and per-process. nginx limit_req on
+// /api/contact is the second (shared) layer.
+const RATE_LIMIT = 5;
+const RATE_WINDOW_MS = 10 * 60 * 1000;
+const MIN_FILL_MS = 3000;
+const LIMITS = {
+  name: 120,
+  email: 254,
+  phone: 40,
+  subject: 120,
+  message: 5000,
+  company: 200,
+} as const;
+
+const hits = new Map<string, number[]>();
+
+function clientIp(request: Request): string {
+  const xff = request.headers.get("x-forwarded-for");
+  const first = xff?.split(",")[0]?.trim();
+  return first || request.headers.get("x-real-ip")?.trim() || "unknown";
+}
+
+function rateLimited(ip: string): boolean {
+  const now = Date.now();
+  const recent = (hits.get(ip) ?? []).filter((t) => now - t < RATE_WINDOW_MS);
+  recent.push(now);
+  hits.set(ip, recent);
+  if (hits.size > 5000) {
+    for (const [k, v] of hits) {
+      if (v.every((t) => now - t >= RATE_WINDOW_MS)) hits.delete(k);
+    }
+  }
+  return recent.length > RATE_LIMIT;
+}
+
 export async function POST(request: Request) {
-  let body: {
-    name?: string;
-    email?: string;
-    phone?: string;
-    subject?: string;
-    message?: string;
-  };
+  if (rateLimited(clientIp(request))) {
+    return NextResponse.json(
+      {
+        ok: false,
+        error: "Too many messages from your connection. Please wait a few minutes and try again, or call us.",
+      },
+      { status: 429 },
+    );
+  }
+
+  let body: Record<string, unknown>;
   try {
     body = await request.json();
   } catch {
     return NextResponse.json({ ok: false, error: "Invalid JSON" }, { status: 400 });
   }
+  if (!body || typeof body !== "object") {
+    return NextResponse.json({ ok: false, error: "Invalid request" }, { status: 400 });
+  }
 
-  const name = String(body.name ?? "").trim();
-  const email = String(body.email ?? "").trim();
-  const message = String(body.message ?? "").trim();
+  const str = (v: unknown) => (typeof v === "string" ? v : v == null ? "" : String(v)).trim();
+  const fields = {
+    name: str(body.name),
+    email: str(body.email),
+    phone: str(body.phone),
+    subject: str(body.subject),
+    message: str(body.message),
+    company: str(body.company),
+  };
+
+  for (const [key, max] of Object.entries(LIMITS)) {
+    if (fields[key as keyof typeof fields].length > max) {
+      return NextResponse.json(
+        { ok: false, error: `The ${key} field is too long (max ${max} characters).` },
+        { status: 400 },
+      );
+    }
+  }
+
+  // Honeypot: pretend success, send nothing.
+  if (fields.company) {
+    return NextResponse.json({ ok: true });
+  }
+
+  // Time-trap: form render timestamp (ms). Too-fast submissions look like bots.
+  const startedAt = Number(body.startedAt);
+  if (Number.isFinite(startedAt) && startedAt > 0 && Date.now() - startedAt < MIN_FILL_MS) {
+    return NextResponse.json({ ok: true });
+  }
+
+  const { name, email, message } = fields;
   if (!name || !email || !message) {
     return NextResponse.json({ ok: false, error: "Missing required fields" }, { status: 400 });
   }
@@ -30,8 +101,8 @@ export async function POST(request: Request) {
   const record = {
     name,
     email,
-    phone: String(body.phone ?? "").trim(),
-    subject: String(body.subject ?? "").trim(),
+    phone: fields.phone,
+    subject: fields.subject,
     message,
     receivedAt: new Date().toISOString(),
   };
@@ -67,7 +138,7 @@ export async function POST(request: Request) {
       from,
       to,
       replyTo: email,
-      subject: `[Website] ${record.subject || "Inquiry"} — ${name}`,
+      subject: `[Website] ${(record.subject || "Inquiry").replace(/[\r\n]+/g, " ")} — ${name.replace(/[\r\n]+/g, " ")}`,
       text: Object.entries(record)
         .map(([k, v]) => `${k}: ${v}`)
         .join("\n"),

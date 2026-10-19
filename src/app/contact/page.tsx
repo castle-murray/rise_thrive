@@ -5,6 +5,7 @@ import { publicContact } from "@/lib/site";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/contact" },
   title: "Contact",
   description: "Write or call Rise & Thrive Support Services.",
 };

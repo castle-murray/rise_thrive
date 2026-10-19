@@ -6,6 +6,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/staff" },
   title: "Our people",
   description: `Meet the people behind ${site.shortName}.`,
 };

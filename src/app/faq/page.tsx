@@ -5,6 +5,7 @@ import { faqs } from "@/lib/site";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/faq" },
   title: "FAQ",
   description: "Common questions about Rise & Thrive, placement, visits, and how to help.",
 };

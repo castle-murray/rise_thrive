@@ -6,6 +6,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/about" },
   title: "About",
   description: "Mission, vision, values, and leadership for Rise & Thrive Support Services.",
 };

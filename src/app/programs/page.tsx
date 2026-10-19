@@ -6,6 +6,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/programs" },
   title: "Programs & Services",
   description:
     "Residential care, daily structure, and emotional, behavioral, and academic support.",

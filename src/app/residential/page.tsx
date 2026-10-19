@@ -6,6 +6,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/residential" },
   title: "Residential Group Home",
   description: `Ages ${site.ages}. Admission, care philosophy, and safety protocols.`,
 };
